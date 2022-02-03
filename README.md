@@ -23,4 +23,4 @@ Pamiętaj, że wysyłka maila ma odbywać się z wykorzystaniem aspektu! Zastosu
 ### Info
 Proste gui do obsługi Api
 
-http://localhost:8080/videos
+http://localhost:8080/movies

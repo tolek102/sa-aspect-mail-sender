@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Movie</title>
+    <style>
+        .button {
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .button {
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+        }
+
+        .button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button2 {
+            background-color: white;
+            color: black;
+            border: 2px solid #008CBA;
+        }
+
+        .button2:hover {
+            background-color: #ba0000;
+            color: white;
+        }
+
+        input[type=text], select {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 50%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div th:if="${message != null}">
+    <h1 style="color: red" th:text="${message}"></h1>
+</div>
+
+<h3>Enter data of new movie:</h3>
+
+<form action="#" th:action="@{/movies/add}" th:object="${newMovie}" method="post">
+    <p>Id: <input type="text" th:field="*{id}" /></p>
+    <p>Title: <input type="text" th:field="*{title}" /></p>
+    <p>Year Of Premiere: <input type="number" th:field="*{yearOfPremiere}" /></p>
+    <p>Director: <input type="text" th:field="*{director}" /></p>
+    <p>
+        <input type="submit" value="Submit" class="button button" />
+        <input type="reset" value="Reset" class="button button2"/>
+    </p>
+</form>
+
+<a href="/movies" class="button button">Go to movies list</a>
+
+</body>
+</html>
