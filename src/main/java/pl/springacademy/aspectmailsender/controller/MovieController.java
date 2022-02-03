@@ -43,7 +43,13 @@ public class MovieController {
 
     @PostMapping("movies/add")
     public String addMovie(@Valid @ModelAttribute final Movie movie, final RedirectAttributes attributes) {
-        final Optional<Movie> addedMovie = movieService.addMovie(movie);
+        final Optional<Movie> addedMovie;
+        try {
+            addedMovie = movieService.addMovie(movie);
+        } catch (IllegalStateException e) {
+            attributes.addAttribute("message", e.getMessage());
+            return "redirect:/movies/add-movie";
+        }
 
         if (addedMovie.isEmpty()) {
             final String errorMessage = String.format("Movie with id %d already exist", movie.getId());
